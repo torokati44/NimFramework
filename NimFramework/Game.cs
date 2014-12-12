@@ -43,13 +43,7 @@ namespace NimFramework
 
         bool allHeapsEmpty()
         {
-            foreach (int i in heaps) {
-                if (i > 0) {
-                    return false;
-                }
-            }
-            return true;
-            //return heaps.All(h => h <= 0);
+            return heaps.All(h => h <= 0);
         }
 
         void dump()

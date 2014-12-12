@@ -9,13 +9,6 @@ namespace NimFramework
 {
     class RandomAgent : IAgent
     {
-        String name;
-
-        public RandomAgent(String n)
-        {
-            name = n;
-        }
-        
         public Choice step(ReadOnlyCollection<int> heaps)
         {
             Random rand = new Random();
@@ -29,6 +22,8 @@ namespace NimFramework
             return new Choice(heap, stones);
         }
 
-        public String Name { get { return name; } }
+        public String Name { get { return "RandomAgent"; } }
+
+
     }
 }
