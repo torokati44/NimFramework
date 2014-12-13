@@ -23,7 +23,5 @@ namespace NimFramework
         }
 
         public String Name { get { return "RandomAgent"; } }
-
-
     }
 }

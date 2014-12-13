@@ -12,7 +12,14 @@ namespace NimFramework
     {
         static void Main(string[] args)
         {
-            Game game = new Game(new int[] {4, 5}, new RandomAgent(), new RandomAgent());
+            int[] heaps = new int[3];
+
+            for (int i = 0; i < heaps.Count(); ++i)
+            {
+                heaps[i] = 4;
+            }
+
+            Game game = new Game(heaps, new RandomAgent(), new MinimaxAgent());
 
             Stopwatch watch = new Stopwatch();
             watch.Start();
