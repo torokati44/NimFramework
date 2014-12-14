@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 namespace NimFramework
 {
     /// <summary>
-    /// A naív Minimax algoritmust használó ágens megvalósítás.
+    /// Egy alternatív pontszámítási módot alkalmazó Minimax ágens megvalósítás.
     /// </summary>
-    class MinimaxAgent : AbstractMinimaxAgent
+    class SummingMinimaxAgent : AbstractMinimaxAgent
     {
-        public MinimaxAgent(int maxDepth = -1) : base(maxDepth) { }
+        public SummingMinimaxAgent(int maxDepth) : base(maxDepth) { }
 
         public override Choice step(ReadOnlyCollection<int> heaps)
         {
@@ -38,11 +38,13 @@ namespace NimFramework
             return new Choice(max_heap, max_stones);
         }
 
-        public override String Name { get { return "MinimaxAgent"; } }
+        public override String Name { get { return "SummingMinimaxAgent"; } }
 
         /// <summary>
         /// A maximalizáló funkciót megvalósító metódus. Megadja az egy adott
         /// játékállásból kiindulva elérhető maximális pontszámot.
+        /// Pontszámként azonban nem egyszerűen a gyerekekben lévő minimumok
+        /// maximumát adja, hanem az összegüket.
         /// </summary>
         /// <param name="heaps">A kiindulási játékállás.</param>
         /// <param name="depth">A jelenlegi mélység a fában.</param>
@@ -52,12 +54,14 @@ namespace NimFramework
             if (maxDepth >= 0 && depth >= maxDepth) { return 0; }
 
             var children = generateChildren(heaps);
-            return (children.Count() == 0) ? 1 : children.Max(h => min(h, depth + 1));
+            return (children.Count() == 0) ? 1 : children.Sum(h => min(h, depth + 1));
         }
 
         /// <summary>
         /// A minimalizáló funkciót megvalósító metódus. Megadja az egy adott
         /// játékállásból kiindulva a legrosszabb elérhető pontszámot.
+        /// Pontszámként azonban nem egyszerűen a gyerekekben lévő maximumok
+        /// minimumát adja, hanem az összegüket.
         /// </summary>
         /// <param name="heaps">A kiindulási játékállás.</param>
         /// <param name="depth">A jelenlegi mélység a fában.</param>
@@ -67,7 +71,7 @@ namespace NimFramework
             if (maxDepth >= 0 && depth >= maxDepth) { return 0; }
 
             var children = generateChildren(heaps);
-            return (children.Count() == 0) ? -1 : children.Min(h => max(h, depth + 1));
+            return (children.Count() == 0) ? -1 : children.Sum(h => max(h, depth + 1));
         }
     }
 }

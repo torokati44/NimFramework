@@ -7,11 +7,16 @@ using System.Threading.Tasks;
 
 namespace NimFramework
 {
+    /// <summary>
+    /// Egy nagyon egyszerű ágens megvalósítás, mindig egy véletlenszerű,
+    /// még nem üres kupacból vesz el potnosan egy követ.
+    /// </summary>
     class RandomAgent : IAgent
     {
+        static Random rand = new Random();
+
         public Choice step(ReadOnlyCollection<int> heaps)
         {
-            Random rand = new Random();
             int heap;
             do
             {
