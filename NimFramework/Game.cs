@@ -23,7 +23,7 @@ namespace NimFramework
         {
             while (true)
             {
-                dump();
+                //dump();
                 Choice aliceChoice = alice.step(Array.AsReadOnly(heaps));
                 heaps[aliceChoice.Heap] -= aliceChoice.Stones;
                 if (allHeapsEmpty())
@@ -31,7 +31,7 @@ namespace NimFramework
                     return alice;
                 }
 
-                dump();
+                //dump();
                 Choice bobChoice = bob.step(Array.AsReadOnly(heaps));
                 heaps[bobChoice.Heap] -= bobChoice.Stones;
                 if (allHeapsEmpty())

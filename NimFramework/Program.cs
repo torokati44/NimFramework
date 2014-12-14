@@ -12,20 +12,23 @@ namespace NimFramework
     {
         static void Main(string[] args)
         {
-            int[] heaps = new int[3];
-
-            for (int i = 0; i < heaps.Count(); ++i)
+            for (int n = 0; n < 20; ++n)
             {
-                heaps[i] = 4;
+                int[] heaps = new int[4];
+
+                for (int i = 0; i < heaps.Count(); ++i)
+                {
+                    heaps[i] = 3;
+                }
+
+                Game game = new Game(heaps, new RandomAgent(), new MinimaxAgent());
+
+                Stopwatch watch = new Stopwatch();
+                watch.Start();
+                IAgent winner = game.run();
+                watch.Stop();
+                Console.WriteLine("Game took {0} ms, {1} won.", watch.ElapsedMilliseconds, winner.Name);
             }
-
-            Game game = new Game(heaps, new RandomAgent(), new MinimaxAgent());
-
-            Stopwatch watch = new Stopwatch();
-            watch.Start();
-            IAgent winner = game.run();
-            watch.Stop();
-            Console.WriteLine("Game took {0} ms, {1} won.", watch.ElapsedMilliseconds, winner.Name);
             Console.ReadKey();
         }
     }
