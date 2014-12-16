@@ -93,5 +93,9 @@ namespace NimFramework
             }
             return minFitness;
         }
+
+        public override string ToString() {
+            return "Nyeséses minimax ágens";
+        }
     }
 }

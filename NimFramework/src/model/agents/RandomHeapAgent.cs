@@ -27,5 +27,9 @@ namespace NimFramework
         }
 
         public String Name { get { return "RandomHeapAgent"; } }
+
+        public override string ToString() {
+            return "Javított random ágens";
+        }
     }
 }

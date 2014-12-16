@@ -8,13 +8,22 @@ namespace NimFramework
 {
     class Game
     {
-        int[] heaps;
-        IAgent alice;
-        IAgent bob;
+        private int[] heaps;
+        private IAgent alice;
+        private IAgent bob;
 
         public Game(int[] h, IAgent a, IAgent b)
         {
             heaps = h;
+            alice = a;
+            bob = b;
+        }
+
+        public Game(int h, int stones, IAgent a, IAgent b) {
+            heaps = new int[h];
+            for (int i = 0; i < h; ++i) {
+                heaps[i] = stones;
+            }
             alice = a;
             bob = b;
         }

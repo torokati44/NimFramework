@@ -73,5 +73,9 @@ namespace NimFramework
             var children = generateChildren(heaps);
             return (children.Count() == 0) ? -1 : children.Sum(h => max(h, depth + 1));
         }
+
+        public override string ToString() {
+            return "Összegző minimax ágens";
+        }
     }
 }

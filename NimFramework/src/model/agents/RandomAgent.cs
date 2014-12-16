@@ -28,5 +28,9 @@ namespace NimFramework
         }
 
         public String Name { get { return "RandomAgent"; } }
+
+        public override string ToString() {
+            return "Random ágens";
+        }
     }
 }
