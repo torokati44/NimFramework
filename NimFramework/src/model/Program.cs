@@ -5,6 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
+using System.Configuration;
+using System.Reflection;
+using System.Windows.Forms;
 
 namespace NimFramework
 {
@@ -12,7 +15,7 @@ namespace NimFramework
     {
         static void Main(string[] args)
         {
-            Random rand = new System.Random();
+            /*Random rand = new System.Random();
             for (int n = 0; n < 20; ++n)
             {
                 int[] heaps = new int[4];
@@ -29,7 +32,11 @@ namespace NimFramework
                 watch.Stop();
                 Console.WriteLine("Game took {0} ms, {1} won.", watch.ElapsedMilliseconds, winner.Name);
             }
-            Console.ReadKey();
+            Console.ReadKey();*/
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new MainForm());
+
         }
     }
 }
