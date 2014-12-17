@@ -54,7 +54,7 @@ namespace NimFramework
             if (maxDepth >= 0 && depth >= maxDepth) { return 0; }
 
             var children = generateChildren(heaps);
-            if (children.Count() == 0) { return 1; }
+            if (children.Count() == 0) { return -1; }
 
             int maxFitness = Int32.MinValue;
             foreach (int[] h in children)
@@ -81,7 +81,7 @@ namespace NimFramework
             if (maxDepth >= 0 && depth >= maxDepth) { return 0; }
 
             var children = generateChildren(heaps);
-            if (children.Count() == 0) { return -1; }
+            if (children.Count() == 0) { return 1; }
 
             int minFitness = Int32.MaxValue;
             foreach (int[] h in children)

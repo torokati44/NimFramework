@@ -52,7 +52,7 @@ namespace NimFramework
             if (maxDepth >= 0 && depth >= maxDepth) { return 0; }
 
             var children = generateChildren(heaps);
-            return (children.Count() == 0) ? 1 : children.Max(h => min(h, depth + 1));
+            return (children.Count() == 0) ? -1 : children.Max(h => min(h, depth + 1));
         }
 
         /// <summary>
@@ -67,7 +67,7 @@ namespace NimFramework
             if (maxDepth >= 0 && depth >= maxDepth) { return 0; }
 
             var children = generateChildren(heaps);
-            return (children.Count() == 0) ? -1 : children.Min(h => max(h, depth + 1));
+            return (children.Count() == 0) ? 1 : children.Min(h => max(h, depth + 1));
         }
 
         public override string ToString() {
