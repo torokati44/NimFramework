@@ -98,6 +98,7 @@
             0,
             0,
             0});
+            this.numStones.ValueChanged += new System.EventHandler(this.numStones_ValueChanged);
             // 
             // numHeaps
             // 

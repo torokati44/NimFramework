@@ -166,5 +166,10 @@ namespace NimFramework {
 
             listGames.Items.Add(lv);
         }
+
+        private void numStones_ValueChanged(object sender, EventArgs e)
+        {
+            numStonesPlusMinus.Maximum = numStones.Value;
+        }
     }
 }
