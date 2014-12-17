@@ -125,6 +125,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(282, 95);
+            this.ControlBox = false;
             this.Controls.Add(this.label2);
             this.Controls.Add(this.heapsLbl);
             this.Controls.Add(this.stonesLbl);
@@ -132,7 +133,10 @@
             this.Controls.Add(this.stones);
             this.Controls.Add(this.heap);
             this.Controls.Add(this.okBtn);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "HumanAgentDialog";
+            this.ShowIcon = false;
             this.Text = "HumanAgentDialog";
             this.Load += new System.EventHandler(this.HumanAgentDialog_Load);
             ((System.ComponentModel.ISupportInitialize)(this.heap)).EndInit();
