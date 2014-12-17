@@ -40,19 +40,19 @@
             this.listGames = new System.Windows.Forms.ListView();
             this.headID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.headAlice = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.headAliceWin = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.headAliceDepth = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.headAliceWin = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.headBob = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.headBobWin = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.headBobDepth = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.headBobWin = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.headHeaps = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.headStones = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.headRuns = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.headTime = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.lblProg = new System.Windows.Forms.Label();
             this.progressBar = new System.Windows.Forms.ProgressBar();
-            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numStones)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numHeaps)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numRuns)).BeginInit();
@@ -265,34 +265,30 @@
             this.headAlice.Text = "Alice";
             this.headAlice.Width = 100;
             // 
-            // headAliceWin
-            // 
-            this.headAliceWin.DisplayIndex = 2;
-            this.headAliceWin.Text = "Alice nyert";
-            this.headAliceWin.Width = 70;
-            // 
             // headAliceDepth
             // 
-            this.headAliceDepth.DisplayIndex = 3;
             this.headAliceDepth.Text = "Alice mélység";
             this.headAliceDepth.Width = 85;
+            // 
+            // headAliceWin
+            // 
+            this.headAliceWin.Text = "Alice nyert";
+            this.headAliceWin.Width = 70;
             // 
             // headBob
             // 
             this.headBob.Text = "Bob";
             this.headBob.Width = 100;
             // 
-            // headBobWin
-            // 
-            this.headBobWin.DisplayIndex = 5;
-            this.headBobWin.Text = "Bob nyert";
-            this.headBobWin.Width = 70;
-            // 
             // headBobDepth
             // 
-            this.headBobDepth.DisplayIndex = 6;
             this.headBobDepth.Text = "Bob mélység";
             this.headBobDepth.Width = 85;
+            // 
+            // headBobWin
+            // 
+            this.headBobWin.Text = "Bob nyert";
+            this.headBobWin.Width = 70;
             // 
             // headHeaps
             // 
@@ -337,6 +333,15 @@
             this.panel1.Size = new System.Drawing.Size(758, 78);
             this.panel1.TabIndex = 18;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(673, 10);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(71, 13);
+            this.label1.TabIndex = 19;
+            this.label1.Text = "Max mélység:";
+            // 
             // lblProg
             // 
             this.lblProg.AutoSize = true;
@@ -352,15 +357,6 @@
             this.progressBar.Name = "progressBar";
             this.progressBar.Size = new System.Drawing.Size(120, 23);
             this.progressBar.TabIndex = 17;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(673, 10);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(71, 13);
-            this.label1.TabIndex = 19;
-            this.label1.Text = "Max mélység:";
             // 
             // MainForm
             // 

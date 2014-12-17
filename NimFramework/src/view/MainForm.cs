@@ -130,11 +130,11 @@ namespace NimFramework {
             ListViewItem lv = new ListViewItem("" + id++);
 
             l.Add(new ListViewItem.ListViewSubItem(lv, alice));//alice
-            l.Add(new ListViewItem.ListViewSubItem(lv, aliceWin + ""));//alicwin
             l.Add(new ListViewItem.ListViewSubItem(lv, aliceDepth + ""));//alicedepth
+            l.Add(new ListViewItem.ListViewSubItem(lv, aliceWin + ""));//alicwin
             l.Add(new ListViewItem.ListViewSubItem(lv, bob));//bob
-            l.Add(new ListViewItem.ListViewSubItem(lv, bobWin + ""));//bobwin
             l.Add(new ListViewItem.ListViewSubItem(lv, bobDepth + ""));//bobdepth
+            l.Add(new ListViewItem.ListViewSubItem(lv, bobWin + ""));//bobwin
             l.Add(new ListViewItem.ListViewSubItem(lv, heaps + ""));//heaps
             l.Add(new ListViewItem.ListViewSubItem(lv, stones + ""));//stones
             l.Add(new ListViewItem.ListViewSubItem(lv, runs + ""));//runs
