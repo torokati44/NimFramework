@@ -40,12 +40,14 @@ namespace NimFramework {
             alice_t.Add(new NamedType(typeof(RandomAgent), "Random ágens"));
             alice_t.Add(new NamedType(typeof(RandomHeapAgent), "Javított random ágens"));
             alice_t.Add(new NamedType(typeof(SummingMinimaxAgent), "Összegző minimax ágens"));
+            alice_t.Add(new NamedType(typeof(HumanAgent), "Felhasználó ágens"));
 
             bob_t.Add(new NamedType(typeof(MinimaxAgent), "Minimax ágens"));
             bob_t.Add(new NamedType(typeof(PruningMinimaxAgent), "Nyeséses minimax ágens"));
             bob_t.Add(new NamedType(typeof(RandomAgent), "Random ágens"));
             bob_t.Add(new NamedType(typeof(RandomHeapAgent), "Javított random ágens"));
             bob_t.Add(new NamedType(typeof(SummingMinimaxAgent), "Összegző minimax ágens"));
+            bob_t.Add(new NamedType(typeof(HumanAgent), "Felhasználó ágens"));
             
             comboAlice.DataSource = alice_t;
             comboBob.DataSource = bob_t;
@@ -66,6 +68,9 @@ namespace NimFramework {
             }
             else if (t == typeof(SummingMinimaxAgent)) {
                 return new SummingMinimaxAgent(maxDepth);
+            }
+            else if (t == typeof(HumanAgent)) {
+                return new HumanAgent();
             }
 
             return null;

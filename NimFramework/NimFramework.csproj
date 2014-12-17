@@ -61,7 +61,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="HumanAgentDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HumanAgentDialog.Designer.cs">
+      <DependentUpon>HumanAgentDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="src\model\agents\AbstractMinimaxAgent.cs" />
+    <Compile Include="src\model\agents\HumanAgent.cs" />
     <Compile Include="src\model\Choice.cs" />
     <Compile Include="src\model\Game.cs" />
     <Compile Include="src\model\IAgent.cs" />
@@ -100,6 +107,9 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="HumanAgentDialog.resx">
+      <DependentUpon>HumanAgentDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="src\view\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>

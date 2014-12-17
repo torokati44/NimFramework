@@ -9,7 +9,7 @@ namespace NimFramework
     /// <summary>
     /// Az ágensek egy megtenni kívánt lépését reprezentálja.
     /// </summary>
-    struct Choice
+    public struct Choice
     {
         int heap;
         int stones;
