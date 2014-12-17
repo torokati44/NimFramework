@@ -50,6 +50,8 @@
             this.headRuns = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.headTime = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.numStonesPlusMinus = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.lblProg = new System.Windows.Forms.Label();
             this.progressBar = new System.Windows.Forms.ProgressBar();
@@ -59,6 +61,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numAliceDepth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numBobDepth)).BeginInit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numStonesPlusMinus)).BeginInit();
             this.SuspendLayout();
             // 
             // lblHeapNum
@@ -88,10 +91,10 @@
             0,
             0});
             this.numStones.Name = "numStones";
-            this.numStones.Size = new System.Drawing.Size(120, 20);
+            this.numStones.Size = new System.Drawing.Size(49, 20);
             this.numStones.TabIndex = 5;
             this.numStones.Value = new decimal(new int[] {
-            4,
+            3,
             0,
             0,
             0});
@@ -130,7 +133,7 @@
             this.numRuns.Size = new System.Drawing.Size(90, 20);
             this.numRuns.TabIndex = 7;
             this.numRuns.Value = new decimal(new int[] {
-            10,
+            100,
             0,
             0,
             0});
@@ -250,7 +253,7 @@
             this.listGames.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listGames.Location = new System.Drawing.Point(0, 78);
             this.listGames.Name = "listGames";
-            this.listGames.Size = new System.Drawing.Size(758, 249);
+            this.listGames.Size = new System.Drawing.Size(784, 283);
             this.listGames.TabIndex = 17;
             this.listGames.UseCompatibleStateImageBehavior = false;
             this.listGames.View = System.Windows.Forms.View.Details;
@@ -306,10 +309,12 @@
             // 
             // headTime
             // 
-            this.headTime.Text = "Idő";
+            this.headTime.Text = "Idő [s]";
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.numStonesPlusMinus);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.lblProg);
             this.panel1.Controls.Add(this.progressBar);
@@ -330,8 +335,29 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(758, 78);
+            this.panel1.Size = new System.Drawing.Size(784, 78);
             this.panel1.TabIndex = 18;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(165, 28);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(21, 13);
+            this.label2.TabIndex = 21;
+            this.label2.Text = "+/-";
+            // 
+            // numStonesPlusMinus
+            // 
+            this.numStonesPlusMinus.Location = new System.Drawing.Point(192, 24);
+            this.numStonesPlusMinus.Name = "numStonesPlusMinus";
+            this.numStonesPlusMinus.Size = new System.Drawing.Size(49, 20);
+            this.numStonesPlusMinus.TabIndex = 20;
+            this.numStonesPlusMinus.Value = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
             // 
             // label1
             // 
@@ -362,7 +388,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(758, 327);
+            this.ClientSize = new System.Drawing.Size(784, 361);
             this.Controls.Add(this.listGames);
             this.Controls.Add(this.panel1);
             this.Name = "MainForm";
@@ -374,6 +400,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numBobDepth)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numStonesPlusMinus)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -410,5 +437,7 @@
         private System.Windows.Forms.ProgressBar progressBar;
         private System.Windows.Forms.Label lblProg;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.NumericUpDown numStonesPlusMinus;
     }
 }

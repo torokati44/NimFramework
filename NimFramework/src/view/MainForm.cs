@@ -30,6 +30,7 @@ namespace NimFramework {
         private List<NamedType> alice_t = new List<NamedType>();
         private List<NamedType> bob_t = new List<NamedType>();
         public delegate void SimulationFinishedDelegate(int alice, int bob, long time);
+        Thread workerThread = null;
 
         public MainForm() {
             InitializeComponent();
@@ -71,45 +72,64 @@ namespace NimFramework {
         }
 
 
-        private int heaps, stones;
+        private int heaps, stones, plusminus;
         private int aliceDepth, bobDepth;
         private int runs;
         private IAgent Alice, Bob;
         private void btnRun_Click(object sender, EventArgs e) {
-            NamedType als = (NamedType)comboAlice.SelectedItem;
-            NamedType bos = (NamedType)comboBob.SelectedItem;
-            aliceDepth = (int)numAliceDepth.Value;
-            bobDepth = (int)numBobDepth.Value;
 
-            Alice = getSelectedAgent(als.type, aliceDepth);
-            Bob = getSelectedAgent(bos.type, bobDepth);
-            heaps = (int)numHeaps.Value;
-            stones = (int)numStones.Value;
-            Game g = new Game(heaps, stones, Alice, Bob);
-            int aliceWin = 0;
-            int bobWin = 0;
-            runs = (int)numRuns.Value;
-            
-            btnRun.Enabled = false;
-            btnRun.Text = "Futtatás...";
-            new Thread(() => {
-                Stopwatch sw = new Stopwatch();
-                sw.Start();
-                for (int i = 0; i < runs; ++i) {
-                    Invoke(new ProgressDelegate(updateProgress), new object[] { (i*100)/runs, i + "/" + runs });
-                    g.reset(heaps, stones);
-                    IAgent winner = g.run();
-                    aliceWin += winner == Alice ? 1 : 0;
-                    bobWin += winner == Bob ? 1 : 0;
-                }
-                sw.Stop();
-                Invoke(new ProgressDelegate(updateProgress), new object[] { 100, runs + "/" + runs });
-                Invoke(new SimulationFinishedDelegate(simulationEnded), new object[] { aliceWin, bobWin, sw.ElapsedMilliseconds });
-            }) { IsBackground = true }.Start();
+            if (workerThread != null)
+            {
+                workerThread.Abort();
+                workerThread = null;
+                simulationAborted();
+            }
+            else
+            {
+
+                NamedType als = (NamedType)comboAlice.SelectedItem;
+                NamedType bos = (NamedType)comboBob.SelectedItem;
+                aliceDepth = (int)numAliceDepth.Value;
+                bobDepth = (int)numBobDepth.Value;
+
+                Alice = getSelectedAgent(als.type, aliceDepth);
+                Bob = getSelectedAgent(bos.type, bobDepth);
+                heaps = (int)numHeaps.Value;
+                stones = (int)numStones.Value;
+                plusminus = (int)numStonesPlusMinus.Value;
+                Game g = new Game(heaps, stones, plusminus, Alice, Bob);
+                int aliceWin = 0;
+                int bobWin = 0;
+                runs = (int)numRuns.Value;
+
+                btnRun.Text = "Állj!";
+                workerThread = new Thread(() =>
+                {
+                    Stopwatch sw = new Stopwatch();
+                    sw.Start();
+                    for (int i = 0; i < runs; ++i)
+                    {
+                        Invoke(new ProgressDelegate(updateProgress), new object[] { (i * 100) / runs, i + "/" + runs });
+                        g.reset(heaps, stones, plusminus);
+                        IAgent winner = g.run();
+                        aliceWin += winner == Alice ? 1 : 0;
+                        bobWin += winner == Bob ? 1 : 0;
+                    }
+                    sw.Stop();
+                    Invoke(new ProgressDelegate(updateProgress), new object[] { 100, runs + "/" + runs });
+                    Invoke(new SimulationFinishedDelegate(simulationEnded), new object[] { aliceWin, bobWin, sw.ElapsedMilliseconds });
+                }) { IsBackground = true };
+                workerThread.Start();
+            }
+        }
+
+        private void simulationAborted()
+        {
+            updateProgress(0, 0 + "/" + 0);
+            btnRun.Text = "Futtatás";
         }
 
         private void simulationEnded(int alice, int bob, long time) {
-            btnRun.Enabled = true;
             btnRun.Text = "Futtatás";
 
             addToList(Alice.ToString(), alice, aliceDepth, Bob.ToString(), bob, bobDepth,
@@ -138,7 +158,7 @@ namespace NimFramework {
             l.Add(new ListViewItem.ListViewSubItem(lv, heaps + ""));//heaps
             l.Add(new ListViewItem.ListViewSubItem(lv, stones + ""));//stones
             l.Add(new ListViewItem.ListViewSubItem(lv, runs + ""));//runs
-            l.Add(new ListViewItem.ListViewSubItem(lv, time + ""));//time
+            l.Add(new ListViewItem.ListViewSubItem(lv, time / 1000.0f + ""));//time
 
             foreach (var i in l) {
                 lv.SubItems.Add(i);

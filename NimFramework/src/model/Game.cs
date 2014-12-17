@@ -8,22 +8,29 @@ namespace NimFramework
 {
     class Game
     {
+        static Random rand = new Random();
+
         private int[] heaps;
         private IAgent alice;
         private IAgent bob;
 
-        public Game(int h, int stones, IAgent a, IAgent b) {
-            reset(h, stones);
+        public Game(int h, int stones, int plusminus, IAgent a, IAgent b) {
+            reset(h, stones, plusminus);
             alice = a;
             bob = b;
         }
 
-        public void reset(int h, int stones)
+        public void reset(int h, int stones, int plusminus)
         {
+            if (plusminus > stones)
+            {
+                plusminus = stones;
+            }
+
             heaps = new int[h];
             for (int i = 0; i < h; ++i)
             {
-                heaps[i] = stones;
+                heaps[i] = stones + rand.Next(-plusminus, plusminus);
             }
         }
 
