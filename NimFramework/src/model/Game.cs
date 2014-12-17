@@ -12,20 +12,19 @@ namespace NimFramework
         private IAgent alice;
         private IAgent bob;
 
-        public Game(int[] h, IAgent a, IAgent b)
-        {
-            heaps = h;
+        public Game(int h, int stones, IAgent a, IAgent b) {
+            reset(h, stones);
             alice = a;
             bob = b;
         }
 
-        public Game(int h, int stones, IAgent a, IAgent b) {
+        public void reset(int h, int stones)
+        {
             heaps = new int[h];
-            for (int i = 0; i < h; ++i) {
+            for (int i = 0; i < h; ++i)
+            {
                 heaps[i] = stones;
             }
-            alice = a;
-            bob = b;
         }
 
         public IAgent run()

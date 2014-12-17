@@ -97,6 +97,7 @@ namespace NimFramework {
                 sw.Start();
                 for (int i = 0; i < runs; ++i) {
                     Invoke(new ProgressDelegate(updateProgress), new object[] { (i*100)/runs, i + "/" + runs });
+                    g.reset(heaps, stones);
                     IAgent winner = g.run();
                     aliceWin += winner == Alice ? 1 : 0;
                     bobWin += winner == Bob ? 1 : 0;

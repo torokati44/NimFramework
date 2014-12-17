@@ -50,8 +50,9 @@
             this.headRuns = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.headTime = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.progressBar = new System.Windows.Forms.ProgressBar();
             this.lblProg = new System.Windows.Forms.Label();
+            this.progressBar = new System.Windows.Forms.ProgressBar();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numStones)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numHeaps)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numRuns)).BeginInit();
@@ -90,7 +91,7 @@
             this.numStones.Size = new System.Drawing.Size(120, 20);
             this.numStones.TabIndex = 5;
             this.numStones.Value = new decimal(new int[] {
-            1,
+            4,
             0,
             0,
             0});
@@ -107,7 +108,7 @@
             this.numHeaps.Size = new System.Drawing.Size(72, 20);
             this.numHeaps.TabIndex = 6;
             this.numHeaps.Value = new decimal(new int[] {
-            10,
+            3,
             0,
             0,
             0});
@@ -129,7 +130,7 @@
             this.numRuns.Size = new System.Drawing.Size(90, 20);
             this.numRuns.TabIndex = 7;
             this.numRuns.Value = new decimal(new int[] {
-            100,
+            10,
             0,
             0,
             0});
@@ -201,10 +202,10 @@
             this.numAliceDepth.Size = new System.Drawing.Size(40, 20);
             this.numAliceDepth.TabIndex = 14;
             this.numAliceDepth.Value = new decimal(new int[] {
-            10,
+            1,
             0,
             0,
-            0});
+            -2147483648});
             // 
             // numBobDepth
             // 
@@ -218,15 +219,15 @@
             this.numBobDepth.Size = new System.Drawing.Size(40, 20);
             this.numBobDepth.TabIndex = 15;
             this.numBobDepth.Value = new decimal(new int[] {
-            10,
+            1,
             0,
             0,
-            0});
+            -2147483648});
             // 
             // lblDepth
             // 
             this.lblDepth.AutoSize = true;
-            this.lblDepth.Location = new System.Drawing.Point(468, 9);
+            this.lblDepth.Location = new System.Drawing.Point(471, 10);
             this.lblDepth.Name = "lblDepth";
             this.lblDepth.Size = new System.Drawing.Size(71, 13);
             this.lblDepth.TabIndex = 16;
@@ -237,11 +238,11 @@
             this.listGames.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.headID,
             this.headAlice,
-            this.headAliceWin,
             this.headAliceDepth,
+            this.headAliceWin,
             this.headBob,
-            this.headBobWin,
             this.headBobDepth,
+            this.headBobWin,
             this.headHeaps,
             this.headStones,
             this.headRuns,
@@ -249,7 +250,7 @@
             this.listGames.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listGames.Location = new System.Drawing.Point(0, 78);
             this.listGames.Name = "listGames";
-            this.listGames.Size = new System.Drawing.Size(788, 249);
+            this.listGames.Size = new System.Drawing.Size(758, 249);
             this.listGames.TabIndex = 17;
             this.listGames.UseCompatibleStateImageBehavior = false;
             this.listGames.View = System.Windows.Forms.View.Details;
@@ -257,31 +258,41 @@
             // headID
             // 
             this.headID.Text = "ID";
-            this.headID.Width = 109;
+            this.headID.Width = 25;
             // 
             // headAlice
             // 
             this.headAlice.Text = "Alice";
+            this.headAlice.Width = 100;
             // 
             // headAliceWin
             // 
+            this.headAliceWin.DisplayIndex = 2;
             this.headAliceWin.Text = "Alice nyert";
+            this.headAliceWin.Width = 70;
             // 
             // headAliceDepth
             // 
+            this.headAliceDepth.DisplayIndex = 3;
             this.headAliceDepth.Text = "Alice mélység";
+            this.headAliceDepth.Width = 85;
             // 
             // headBob
             // 
             this.headBob.Text = "Bob";
+            this.headBob.Width = 100;
             // 
             // headBobWin
             // 
+            this.headBobWin.DisplayIndex = 5;
             this.headBobWin.Text = "Bob nyert";
+            this.headBobWin.Width = 70;
             // 
             // headBobDepth
             // 
+            this.headBobDepth.DisplayIndex = 6;
             this.headBobDepth.Text = "Bob mélység";
+            this.headBobDepth.Width = 85;
             // 
             // headHeaps
             // 
@@ -290,10 +301,12 @@
             // headStones
             // 
             this.headStones.Text = "Kövek";
+            this.headStones.Width = 50;
             // 
             // headRuns
             // 
             this.headRuns.Text = "Futtatások";
+            this.headRuns.Width = 65;
             // 
             // headTime
             // 
@@ -301,6 +314,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.lblProg);
             this.panel1.Controls.Add(this.progressBar);
             this.panel1.Controls.Add(this.lblHeapNum);
@@ -320,15 +334,8 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(788, 78);
+            this.panel1.Size = new System.Drawing.Size(758, 78);
             this.panel1.TabIndex = 18;
-            // 
-            // progressBar
-            // 
-            this.progressBar.Location = new System.Drawing.Point(103, 51);
-            this.progressBar.Name = "progressBar";
-            this.progressBar.Size = new System.Drawing.Size(120, 23);
-            this.progressBar.TabIndex = 17;
             // 
             // lblProg
             // 
@@ -339,11 +346,27 @@
             this.lblProg.TabIndex = 18;
             this.lblProg.Text = "0/0";
             // 
+            // progressBar
+            // 
+            this.progressBar.Location = new System.Drawing.Point(103, 51);
+            this.progressBar.Name = "progressBar";
+            this.progressBar.Size = new System.Drawing.Size(120, 23);
+            this.progressBar.TabIndex = 17;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(673, 10);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(71, 13);
+            this.label1.TabIndex = 19;
+            this.label1.Text = "Max mélység:";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(788, 327);
+            this.ClientSize = new System.Drawing.Size(758, 327);
             this.Controls.Add(this.listGames);
             this.Controls.Add(this.panel1);
             this.Name = "MainForm";
@@ -390,5 +413,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ProgressBar progressBar;
         private System.Windows.Forms.Label lblProg;
+        private System.Windows.Forms.Label label1;
     }
 }
