@@ -25,8 +25,8 @@ namespace NimFramework
                 {
                     int[] child = heaps.ToArray();
                     child[heap] -= stones;
-                    int fitness = max(child);
-                    if (fitness >= max_fitness)
+                    int fitness = min(child);
+                    if (fitness > max_fitness)
                     {
                         max_fitness = fitness;
                         max_heap = heap;

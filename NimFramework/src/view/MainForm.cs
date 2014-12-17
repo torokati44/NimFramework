@@ -86,12 +86,10 @@ namespace NimFramework {
             if (workerThread != null)
             {
                 workerThread.Abort();
-                workerThread = null;
                 simulationAborted();
             }
             else
             {
-
                 NamedType als = (NamedType)comboAlice.SelectedItem;
                 NamedType bos = (NamedType)comboBob.SelectedItem;
                 aliceDepth = (int)numAliceDepth.Value;
@@ -132,11 +130,12 @@ namespace NimFramework {
         {
             updateProgress(0, 0 + "/" + 0);
             btnRun.Text = "Futtatás";
+            workerThread = null;
         }
 
         private void simulationEnded(int alice, int bob, long time) {
             btnRun.Text = "Futtatás";
-
+            workerThread = null;
             addToList(Alice.ToString(), alice, aliceDepth, Bob.ToString(), bob, bobDepth,
                       heaps, stones, runs, time);
         }

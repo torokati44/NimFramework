@@ -42,7 +42,7 @@ namespace NimFramework
                     children.Add(child);
                 }
             }
-
+            
             return children;
         }
 
