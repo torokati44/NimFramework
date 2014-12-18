@@ -60,6 +60,11 @@ namespace NimFramework
                 int fitness = min(h, alpha, beta, depth + 1);
                 if (fitness > maxFitness) { maxFitness = fitness; }
                 if (fitness > alpha) { alpha = fitness; }
+
+                // Itt történik meg a nyesés, ha az alfa már nagyobb itt, mint a kapott
+                // béta, akkor a többi gyerek bejárása az alfát csak tovább növelhetné,
+                // de a kisebb béta miatt ez már semmiképp nem javíthatna a döntésen,
+                // az egyik feljebb lévő minimalizáló úgyis eldobná ezt az értéket.
                 if (alpha >= beta) { break; }
             }
             return maxFitness;
@@ -87,6 +92,11 @@ namespace NimFramework
                 int fitness = max(h, alpha, beta, depth + 1);
                 if (fitness < minFitness) { minFitness = fitness; }
                 if (fitness < beta) { beta = fitness; }
+
+                // Itt történik meg a nyesés, ha az béta már kisebb itt, mint a kapott
+                // alfa, akkor a többi gyerek bejárása a bétát csak tovább csökkenthetné,
+                // de a nagyobb alfa miatt ez már semmiképp nem javíthatna a döntésen,
+                // az egyik feljebb lévő maximalizáló úgyis eldobná ezt az értéket.
                 if (beta <= alpha) { break; }
             }
             return minFitness;
