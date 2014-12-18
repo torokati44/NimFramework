@@ -47,6 +47,5 @@ namespace NimFramework
         }
 
         abstract public Choice step(ReadOnlyCollection<int> heaps);
-        abstract public String Name { get; }
     }
 }

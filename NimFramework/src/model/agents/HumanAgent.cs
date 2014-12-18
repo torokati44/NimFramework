@@ -8,8 +8,10 @@ using System.Threading.Tasks;
 namespace NimFramework
 {
     /// <summary>
-    /// Egy nagyon egyszerű ágens megvalósítás, mindig egy véletlenszerű,
-    /// még nem üres kupacból vesz el potnosan egy követ.
+    /// A felhasználó által vezérelt ágens megvalósítása.
+    /// Minden lépésnél egy kis felbukkanó párbeszédablakban kijelzi
+    /// a jelenlegi állást, és bekéri, hogy melyik kupacból hány követ
+    /// szeretnénk elvenni.
     /// </summary>
     class HumanAgent : IAgent
     {
@@ -19,8 +21,6 @@ namespace NimFramework
             dialog.ShowDialog();
             return dialog.getChoice();
         }
-
-        public String Name { get { return "HumanAgent"; } }
 
         public override string ToString()
         {

@@ -38,8 +38,6 @@ namespace NimFramework
             return new Choice(max_heap, max_stones);
         }
 
-        public override String Name { get { return "PruningMinimaxAgent"; } }
-
         /// <summary>
         /// A maximalizáló funkciót megvalósító metódus. Megadja az egy adott
         /// játékállásból kiindulva elérhető maximális pontszámot.

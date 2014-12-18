@@ -18,10 +18,5 @@ namespace NimFramework
         /// <param name="heaps">Egy jelenlegi játékállapot, amelyben döntést kell hozni.</param>
         /// <returns>Az ágens által megtenni kívánt lépés.</returns>
         Choice step(ReadOnlyCollection<int> heaps);
-
-        /// <summary>
-        /// Az ágens beazonosítására szolgáló név.
-        /// </summary>
-        String Name { get; }
     }
 }
