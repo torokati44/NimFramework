@@ -55,6 +55,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.lblProg = new System.Windows.Forms.Label();
             this.progressBar = new System.Windows.Forms.ProgressBar();
+            this.headPlusMinus = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             ((System.ComponentModel.ISupportInitialize)(this.numStones)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numHeaps)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numRuns)).BeginInit();
@@ -249,12 +250,13 @@
             this.headBobWin,
             this.headHeaps,
             this.headStones,
+            this.headPlusMinus,
             this.headRuns,
             this.headTime});
             this.listGames.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listGames.Location = new System.Drawing.Point(0, 78);
             this.listGames.Name = "listGames";
-            this.listGames.Size = new System.Drawing.Size(784, 283);
+            this.listGames.Size = new System.Drawing.Size(805, 283);
             this.listGames.TabIndex = 17;
             this.listGames.UseCompatibleStateImageBehavior = false;
             this.listGames.View = System.Windows.Forms.View.Details;
@@ -336,7 +338,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(784, 78);
+            this.panel1.Size = new System.Drawing.Size(805, 78);
             this.panel1.TabIndex = 18;
             // 
             // label2
@@ -385,11 +387,16 @@
             this.progressBar.Size = new System.Drawing.Size(120, 23);
             this.progressBar.TabIndex = 17;
             // 
+            // headPlusMinus
+            // 
+            this.headPlusMinus.Text = "+/-";
+            this.headPlusMinus.Width = 30;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 361);
+            this.ClientSize = new System.Drawing.Size(805, 361);
             this.Controls.Add(this.listGames);
             this.Controls.Add(this.panel1);
             this.Name = "MainForm";
@@ -440,5 +447,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.NumericUpDown numStonesPlusMinus;
+        private System.Windows.Forms.ColumnHeader headPlusMinus;
     }
 }

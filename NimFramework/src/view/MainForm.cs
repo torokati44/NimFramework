@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -32,6 +33,8 @@ namespace NimFramework {
         public delegate void SimulationFinishedDelegate(int alice, int bob, long time);
         Thread workerThread = null;
 
+        StreamWriter logFile;
+
         public MainForm() {
             InitializeComponent();
 
@@ -51,6 +54,16 @@ namespace NimFramework {
             
             comboAlice.DataSource = alice_t;
             comboBob.DataSource = bob_t;
+
+            String logFileName = "results_" + System.DateTime.Now.ToString("yyMMdd_HHmmss") + ".csv";
+            logFile = new StreamWriter(new FileStream(logFileName, FileMode.Create, FileAccess.Write));
+            logFile.AutoFlush = true;
+
+            String line = "alice;aliceDepth;aliceWin;" +
+                "bob;bobDepth;bobWin;" +
+                "heaps;stones;plusminus;runs;time";
+
+            logFile.WriteLine(line);
         }
 
         private IAgent getSelectedAgent(Type t, int maxDepth) {
@@ -137,7 +150,7 @@ namespace NimFramework {
             btnRun.Text = "Futtatás";
             workerThread = null;
             addToList(Alice.ToString(), alice, aliceDepth, Bob.ToString(), bob, bobDepth,
-                      heaps, stones, runs, time);
+                      heaps, stones, plusminus, runs, time);
         }
 
         public delegate void ProgressDelegate(int p, string s);
@@ -149,7 +162,7 @@ namespace NimFramework {
         private int id = 0;
         private void addToList(string alice, int aliceWin, int aliceDepth, 
                                string bob, int bobWin, int bobDepth,
-                               int heaps, int stones, int runs, long time) {
+                               int heaps, int stones, int plusminus, int runs, long time) {
             var l = new List<ListViewItem.ListViewSubItem>();
             ListViewItem lv = new ListViewItem("" + id++);
 
@@ -161,6 +174,7 @@ namespace NimFramework {
             l.Add(new ListViewItem.ListViewSubItem(lv, bobWin + ""));//bobwin
             l.Add(new ListViewItem.ListViewSubItem(lv, heaps + ""));//heaps
             l.Add(new ListViewItem.ListViewSubItem(lv, stones + ""));//stones
+            l.Add(new ListViewItem.ListViewSubItem(lv, plusminus + ""));//plusminus
             l.Add(new ListViewItem.ListViewSubItem(lv, runs + ""));//runs
             l.Add(new ListViewItem.ListViewSubItem(lv, time / 1000.0f + ""));//time
 
@@ -169,6 +183,12 @@ namespace NimFramework {
             }
 
             listGames.Items.Add(lv);
+
+            String line = alice + ";" + aliceDepth + ";" + aliceWin + ";" +
+                bob + ";" + bobDepth + ";" + bobWin + ";" + 
+                heaps + ";" + stones + ";" + plusminus + ";" + runs + ";" + time / 1000.0f;
+
+            logFile.WriteLine(line);
         }
 
         private void numStones_ValueChanged(object sender, EventArgs e)
