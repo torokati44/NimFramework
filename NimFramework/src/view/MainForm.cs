@@ -14,14 +14,13 @@ using System.Windows.Forms;
 namespace NimFramework {
     struct NamedType {
         public Type type;
-        public string p;
 
-        public NamedType(Type type, string p) {
+        public NamedType(Type type) {
             this.type = type;
-            this.p = p;
         }
+
         public override string ToString() {
-            return p;
+            return ((IAgent)Activator.CreateInstance(type)).ToString();
         }
     }
 
@@ -38,19 +37,14 @@ namespace NimFramework {
         public MainForm() {
             InitializeComponent();
 
-            alice_t.Add(new NamedType(typeof(MinimaxAgent), "Minimax ágens"));
-            alice_t.Add(new NamedType(typeof(PruningMinimaxAgent), "Nyeséses minimax ágens"));
-            alice_t.Add(new NamedType(typeof(RandomAgent), "Random ágens"));
-            alice_t.Add(new NamedType(typeof(RandomHeapAgent), "Javított random ágens"));
-            alice_t.Add(new NamedType(typeof(SummingMinimaxAgent), "Összegző minimax ágens"));
-            alice_t.Add(new NamedType(typeof(HumanAgent), "Felhasználó ágens"));
+            alice_t.Add(new NamedType(typeof(MinimaxAgent)));
+            alice_t.Add(new NamedType(typeof(PruningMinimaxAgent)));
+            alice_t.Add(new NamedType(typeof(RandomAgent)));
+            alice_t.Add(new NamedType(typeof(RandomHeapAgent)));
+            alice_t.Add(new NamedType(typeof(SummingMinimaxAgent)));
+            alice_t.Add(new NamedType(typeof(HumanAgent)));
 
-            bob_t.Add(new NamedType(typeof(MinimaxAgent), "Minimax ágens"));
-            bob_t.Add(new NamedType(typeof(PruningMinimaxAgent), "Nyeséses minimax ágens"));
-            bob_t.Add(new NamedType(typeof(RandomAgent), "Random ágens"));
-            bob_t.Add(new NamedType(typeof(RandomHeapAgent), "Javított random ágens"));
-            bob_t.Add(new NamedType(typeof(SummingMinimaxAgent), "Összegző minimax ágens"));
-            bob_t.Add(new NamedType(typeof(HumanAgent), "Felhasználó ágens"));
+            bob_t = alice_t.ToList();
             
             comboAlice.DataSource = alice_t;
             comboBob.DataSource = bob_t;
@@ -59,9 +53,7 @@ namespace NimFramework {
             logFile = new StreamWriter(new FileStream(logFileName, FileMode.Create, FileAccess.Write));
             logFile.AutoFlush = true;
 
-            String line = "alice;aliceDepth;aliceWin;" +
-                "bob;bobDepth;bobWin;" +
-                "heaps;stones;plusminus;runs;time";
+            String line = "alice;aliceDepth;aliceWin;bob;bobDepth;bobWin;heaps;stones;plusminus;runs;time";
 
             logFile.WriteLine(line);
         }

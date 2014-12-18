@@ -12,7 +12,8 @@ namespace NimFramework
     /// </summary>
     class PruningMinimaxAgent : AbstractMinimaxAgent
     {
-        public PruningMinimaxAgent(int maxDepth) : base(maxDepth) { }
+        public PruningMinimaxAgent() : this(-1) { }
+        public PruningMinimaxAgent(int maxDepth = -1) : base(maxDepth) { }
 
         public override Choice step(ReadOnlyCollection<int> heaps)
         {

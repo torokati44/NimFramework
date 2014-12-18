@@ -12,7 +12,8 @@ namespace NimFramework
     /// </summary>
     class SummingMinimaxAgent : AbstractMinimaxAgent
     {
-        public SummingMinimaxAgent(int maxDepth) : base(maxDepth) { }
+        public SummingMinimaxAgent() : this(-1) { }
+        public SummingMinimaxAgent(int maxDepth = -1) : base(maxDepth) { }
 
         public override Choice step(ReadOnlyCollection<int> heaps)
         {

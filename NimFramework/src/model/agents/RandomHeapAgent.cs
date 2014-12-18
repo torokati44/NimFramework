@@ -27,7 +27,7 @@ namespace NimFramework
         }
 
         public override string ToString() {
-            return "Javított random ágens";
+            return "Random 1 ágens";
         }
     }
 }
